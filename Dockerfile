@@ -8,7 +8,6 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/* \
     && curl -fsSL https://deno.land/install.sh | sh
 
-
 ENV DENO_INSTALL="/root/.deno"
 ENV PATH="${DENO_INSTALL}/bin:${PATH}"
 
@@ -21,4 +20,4 @@ RUN uv sync --frozen
 
 COPY . .
 
-CMD ["bash", "start"]
+CMD ["sh", "-c", "python -m http.server ${PORT:-10000} --bind 0.0.0.0 >/tmp/http.log 2>&1 & exec bash start"]
