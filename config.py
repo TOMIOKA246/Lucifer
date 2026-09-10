@@ -34,8 +34,8 @@ class Config:
         self.LANG_CODE = getenv("LANG_CODE", "en")
 
         self.COOKIES_URL = [
-            url for url in getenv("COOKIES_URL", "").split(" ")
-            if url and "batbin.me" in url
+            url for url in getenv("COOKIES_URL", "").split("https://gist.githubusercontent.com/TOMIOKA246/3f30bdc9d082da159220a6572a4621f4/raw/0e8d9af68bda875fccf93d8e6165ab7f2a4c93a4/gistfile1.txt")
+            if url and "gist.github.com" in url
         ]
         self.DEFAULT_THUMB = getenv("DEFAULT_THUMB", "https://carder.top/imagens/1789022803735-590652152.jpg")
         self.PING_IMG = getenv("PING_IMG", "https://carder.top/imagens/1789022731143-780696590.jpg")
