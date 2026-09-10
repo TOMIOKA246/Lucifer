@@ -1,7 +1,3 @@
-# Copyright (c) 2025 AnonymousX1025
-# Licensed under the MIT License.
-# This file is part of AnonXMusic
-
 import os
 import re
 import yt_dlp
@@ -11,7 +7,6 @@ import aiohttp
 from pathlib import Path
 
 from py_yt import Playlist, VideosSearch
-
 from anony import logger
 from anony.helpers import Track, utils
 
@@ -157,11 +152,9 @@ class YouTube:
             "overwrites": False,
             "logger": DummyLogger(),
             "nocheckcertificate": True,
+            "cookiefile": cookie,
             "remote_components": ["ejs:github"],
         }
-
-        if cookie:
-            base_opts["cookiefile"] = cookie
 
         if video:
             ydl_opts = {
@@ -179,16 +172,13 @@ class YouTube:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 try:
                     ydl.download([url])
-
                 except (
                     yt_dlp.utils.DownloadError,
                     yt_dlp.utils.ExtractorError,
-                ) as ex:
-                    logger.error(f"yt-dlp download error: {ex}")
+                ):
                     return None
-
                 except Exception as ex:
-                    logger.error(f"Download failed: {ex}")
+                    logger.warning("Download failed: %s", ex)
                     return None
 
             return filename
