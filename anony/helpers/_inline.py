@@ -125,8 +125,7 @@ class Inline:
                 [
                     self.ikb(
                         text=lang["language"] + " ➜",
-                        language if "language" in locals() else "settings",
-                        callback_data="language",
+                        callback_data="settings",
                     ),
                     self.ikb(text=lang_codes[language], callback_data="language"),
                 ],
@@ -153,8 +152,8 @@ class Inline:
             rows += [
                 [
                     self.ikb(
-                        text="Owner",
-                        url="https://t.me/Arisu567",
+                        text=lang["source"],
+                        url="https://github.com/AnonymousX1025/AnonXMusic",
                     )
                 ]
             ]
